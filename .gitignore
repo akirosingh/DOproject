@@ -4,3 +4,6 @@
 .Ruserdata
 /data/raw_data/raw_genotype.csv
 /data/prepared_data/
+/data/prepared_data/dataic.rds
+/data/prepared_data/grouped.rds
+/data/prepared_data/phenotypes.rds
