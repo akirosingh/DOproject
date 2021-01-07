@@ -9,40 +9,19 @@ editor_options:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+loadd(fig1)
+loadd(fig2) 
 ```
 
 ## Analysis
 
-├── DOproject.Rproj
-├── R
-│   ├── get_gmap.R
-│   ├── get_phenocovar.R
-│   ├── get_pmap.R
-│   ├── get_raw_phenotypes.R
-│   ├── get_rawcovar.R
-│   ├── get_rawfoundergenotypes.R
-│   ├── get_rawgenotypes.R
-│   └── plan.R
-├── _drake.R
-├── data
-│   ├── prepared_data
-│   │   ├── dataic.rds
-│   │   ├── grouped.rds
-│   │   ├── phenotypes.csv
-│   │   └── phenotypes.rds
-│   └── raw_data
-│       ├── array_id.csv
-│       ├── char_review.xlsx
-│       ├── covar.csv
-│       ├── markers.csv
-│       ├── metadata.csv
-│       ├── raw_phenotype.csv
-│       ├── sample_index.csv
-│       └── ~$axiom8_samples.xlsx
-├── doc
-│   ├── manuscript.Rmd
-│   └── manuscript.html
-└── packages.R
+```{r fig1}
+fig1
+```
+
+```{r fig2}
+fig2
+```
 
 ## Reproducibility
 

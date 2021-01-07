@@ -7,7 +7,7 @@
 ##' @return
 ##' @author akirosingh
 ##' @export
-get_raw_phenotypes <- function() {
+get_rawphenotypes <- function() {
 
   raw_phenotypes <- readr::read_csv(here("data/raw_data","raw_phenotype.csv"))
   raw_phenotypes$Sex <- ("female")

@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+/data/raw_data/raw_genotype.csv
+/data/prepared_data/

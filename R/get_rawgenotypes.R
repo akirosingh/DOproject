@@ -8,7 +8,8 @@
 ##' @author akirosingh
 ##' @export
 get_rawgenotypes <- function() {
-
-  NULL
+ #TODO: When data is online make this function download from url
+  readr::read_csv(here("data/raw_data","raw_genotype.csv"))
 
 }
+
