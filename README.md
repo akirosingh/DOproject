@@ -11,14 +11,12 @@
 -->
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-<!-- badges: start -->
-[![Launch Rstudio Binder](http://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/akirosingh/Diversity-Outbred-Malaria-Project/master?urlpath=rstudio)
-<!-- badges: end -->
+
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/akirosingh/Diversity-Outbred-Malaria-Project">
+  <a href="https://github.com/akirosingh/DOproject">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -27,12 +25,12 @@
   <p align="center">
     Here lies all the work I'm doing on Diversity Outbred mice and malaria infection. 
     <br />
-    <a href="https://github.com/akirosingh/Diversity-Outbred-Malaria-Project"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/akirosingh/DOproject"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/issues">Report Bug</a>
+    <a href="https://github.com/akirosingh/DOproject/issues">Report Bug</a>
     ·
-    <a href="https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/issues">Request Feature</a>
+    <a href="https://github.com/akirosingh/DOproject/issues">Request Feature</a>
   </p>
 </p>
 
@@ -73,67 +71,82 @@ Approximately 500 diversity outbred mice were infected with *Plasmodium chabaudi
 
 ```
 .
-├── Diversity-Outbred-Malaria-Project.Rproj
-├── Dockerfile
+├── DOproject.Rproj
 ├── LICENSE
-├── Makefile
 ├── R
-│   ├── figures
-│   │   ├── fig1.R
-│   │   ├── fig2.R
-│   │   ├── fig3.R
-│   │   ├── fig4.R
-│   │   ├── fig5.R
-│   │   ├── fig5_new.R
-│   │   └── supfigures
-│   │       ├── TODO.R
-│   │       ├── char_figures.R
-│   │       └── tolerance_plot.R
-│   ├── phenotypes.Rmd
-│   └── setup.Rmd
+│   ├── calculate_phenotypes.R
+│   ├── create_control.R
+│   ├── create_fig1.R
+│   ├── create_fig2.R
+│   ├── create_fig3.R
+│   ├── create_fig4.R
+│   ├── create_fig5.R
+│   ├── create_foundergenofile.R
+│   ├── create_genofile.R
+│   ├── create_gmapfile.R
+│   ├── create_phenotypes.R
+│   ├── create_pmapfile.R
+│   ├── create_supfig1.R
+│   ├── create_supfig2.R
+│   ├── get_arrayid.R
+│   ├── get_gmap.R
+│   ├── get_markers.R
+│   ├── get_phenocovar.R
+│   ├── get_pmap.R
+│   ├── get_rawcovar.R
+│   ├── get_rawfoundergenotypes.R
+│   ├── get_rawgenotypes.R
+│   ├── get_rawphenotypes.R
+│   ├── get_sampleindex.R
+│   ├── plan.R
+│   └── zip_datafiles.R
 ├── README.md
+├── _drake.R
 ├── data
 │   ├── prepared_data
+│   │   ├── controlfile.json
+│   │   ├── covar.csv
 │   │   ├── dataic.rds
+│   │   ├── do_malaria.zip
+│   │   ├── foundergeno.csv
+│   │   ├── geno.csv
+│   │   ├── gmap.csv
 │   │   ├── grouped.rds
-│   │   ├── phenotypes.csv
-│   │   └── phenotypes.rds
+│   │   ├── pheno.csv
+│   │   ├── phenotypes.rds
+│   │   └── pmap.csv
 │   └── raw_data
 │       ├── array_id.csv
 │       ├── char_review.xlsx
-│       ├── covar.csv
 │       ├── markers.csv
 │       ├── metadata.csv
-│       ├── rawdata.csv
+│       ├── raw_genotype.csv
+│       ├── raw_phenotype.csv
 │       ├── sample_index.csv
 │       └── ~$axiom8_samples.xlsx
-└── images
-    ├── lab.jpeg                      #Schneider Lab
-    └── logo.png                      #Placeholder image
+├── doc
+│   ├── manuscript.Rmd
+│   └── manuscript.html
+├── images
+│   ├── Figure2.pdf
+│   └── logo.png          #Placeholder image
+└── packages.R
 ```
 
 <!-- DEPENDENCIES -->
 ## Dependencies
-Does not require R or RStudio, but `make` & `docker`.
+Requires R and drake
 
-Execute in Terminal:
+Execute in Rstudio:
 
-``` bash
-git clone https://github.com/aaronpeikert/reproducible-research.git
-cd reproducible-research
-make build
-make all DOCKER=TRUE
+``` R
+drake::r_make()
 ```
-
-**Note: Windows user need to manually edit the `Makefile` and set
-current\_path to the current directory and use `make all DOCKER=TRUE
-WINDOWS=TRUE`. We hope that future releases of Docker for Windows will
-not require that workaround.**
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/akirosingh/DOproject/issues) for a list of proposed features (and known issues).
 
 <!-- Resources -->
 ## Resources
@@ -225,20 +238,6 @@ Make is preinstalled on OS X.<br />
 Nothing to do.</td>
 <td style="text-align: center;">Read <a href="https://kbroman.org/minimal_make/">Minimal Make</a></td>
 </tr>
-<tr class="odd">
-<td style="text-align: center;">Docker</td>
-<td style="text-align: center;"><strong>Windows:</strong><br />
-Use chocolately.<br />
-<code>choco install -y docker-desktop</code><br />
-<br />
-<strong>OS X:</strong><br />
-Use Homebrew (from the terminal).<br />
-<code>brew cask install docker</code><br />
-<br />
-<strong>Linux:</strong><br />
-Follow steps described in: <a href="https://docs.docker.com/engine/install/linux-postinstall/">Post-installation steps for Linux</a></td>
-<td style="text-align: center;">Read <a href="https://doi.org/10.32614/RJ-2017-065">An Introduction to Rocker: Docker Containers for R</a>.</td>
-</tr>
 </tbody>
 </table>
 
@@ -253,28 +252,28 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adam Kirosingh - adamsk@stanford.edu
 
-Project Link: [https://github.com/akirosingh/Diversity-Outbred-Malaria-Project](https://github.com/akirosingh/Diversity-Outbred-Malaria-Project)
+Project Link: [https://github.com/akirosingh/DOproject](https://github.com/akirosingh/DOproject)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
-Thanks to Prasanna Jagannathan and my committee David Schneider, Taia Wang, Catherine Blish, and Bali Pulendran. Also special thanks to Brice Gaudilliere, Virginia D. Winn for consultation on experimental design.
+Thanks to David Schneider and Prasanna Jagannathan and my committee, Taia Wang, Catherine Blish, and Bali Pulendran.
 Thanks to my coauthors Avni Gupta, Victoria Chevee
 
 Thank you Karl Broman for paving the way with your work on reproducible research and qtl mapping in R.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/akirosingh/Diversity-Outbred-Malaria-Project.svg?style=for-the-badge
-[contributors-url]: https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/akirosingh/Diversity-Outbred-Malaria-Project.svg?style=for-the-badge
-[forks-url]: https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/network/members
-[stars-shield]: https://img.shields.io/github/stars/akirosingh/Diversity-Outbred-Malaria-Project.svg?style=for-the-badge
-[stars-url]: https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/stargazers
-[issues-shield]: https://img.shields.io/github/issues/akirosingh/Diversity-Outbred-Malaria-Project.svg?style=for-the-badge
-[issues-url]: https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/issues
-[license-shield]: https://img.shields.io/github/license/akirosingh/Diversity-Outbred-Malaria-Project.svg?style=for-the-badge
-[license-url]: https://github.com/akirosingh/Diversity-Outbred-Malaria-Project/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/akirosingh/DOproject.svg?style=for-the-badge
+[contributors-url]: https://github.com/akirosingh/DOproject/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/akirosingh/DOproject.svg?style=for-the-badge
+[forks-url]: https://github.com/akirosingh/DOproject/network/members
+[stars-shield]: https://img.shields.io/github/stars/akirosingh/DOproject.svg?style=for-the-badge
+[stars-url]: https://github.com/akirosingh/DOproject/stargazers
+[issues-shield]: https://img.shields.io/github/issues/akirosingh/DOproject.svg?style=for-the-badge
+[issues-url]: https://github.com/akirosingh/DOproject/issues
+[license-shield]: https://img.shields.io/github/license/akirosingh/DOproject.svg?style=for-the-badge
+[license-url]: https://github.com/akirosingh/DOproject/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/adam-kirosingh-b98a3a80/
 [product-screenshot]: images/lab.jpeg
